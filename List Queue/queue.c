@@ -6,7 +6,7 @@ typedef struct _node{
     struct _node* next;
 } node;
 
-struct _queue{
+struct _queue{   
     node* head;
     node* tail;
     int size;
