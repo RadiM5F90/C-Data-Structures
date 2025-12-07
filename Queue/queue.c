@@ -49,6 +49,7 @@ int queue_enqueue(queue _queue, int value){
     if(_queue->size == _queue->capacity) return QUEUE_ERROR_FULL;
 
     _queue->data[_queue->tail] = value; 
+    // This moves the tail index forward by one position, and wraps it back to 0 when it reaches the end of the array.
     _queue->tail = (_queue->tail + 1) % _queue->capacity;
     _queue->size++; 
     
