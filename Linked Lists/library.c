@@ -31,10 +31,10 @@ list create_list(){
 }
 
 int insert_front(list _list, int value){
-    if (_list == NULL) return -1;
+    if (_list == NULL) return LINKED_LIST_ERROR_NULL;
 
     node* new_node = malloc(sizeof(node));
-    if(new_node == NULL) return -2;
+    if(new_node == NULL) return LINKED_LIST_ERROR_ALLOC;
 
     new_node->value = value;
     new_node->next = _list->head;
@@ -43,15 +43,15 @@ int insert_front(list _list, int value){
     if(_list->tail == NULL) _list->tail = new_node;
     _list->size++;
 
-    return 0;
+    return LINKED_LIST_SUCCESS;
 }
 
 int insert_back(list _list, int value){
-    if(_list == NULL) return -1;
+    if(_list == NULL) return LINKED_LIST_ERROR_NULL;
 
     node* new_node = malloc(sizeof(node));
 
-    if(new_node == NULL) return -2;
+    if(new_node == NULL) return LINKED_LIST_ERROR_ALLOC;
 
     new_node->value = value;
     new_node->next = NULL;
@@ -62,12 +62,12 @@ int insert_back(list _list, int value){
     _list->tail = new_node;
     _list->size++;
 
-    return 0;
+    return LINKED_LIST_SUCCESS;
 }
 
 int insert_at(list _list, int index, int value){
-    if(_list == NULL) return -1;
-    if(index < 0 || index > _list->size) return -4;
+    if(_list == NULL) return LINKED_LIST_ERROR_NULL;
+    if(index < 0 || index > _list->size) return LINKED_LIST_ERROR_INDEX;
     if(index == 0) return insert_front(_list, value);
     if(index == _list->size) return insert_back(_list, value);
 
@@ -76,46 +76,46 @@ int insert_at(list _list, int index, int value){
     for(int i = 0; i < index; i++) prev = prev->next;
 
     node* new_node = malloc(sizeof(node));
-    if(new_node == NULL) return -2;
+    if(new_node == NULL) return LINKED_LIST_ERROR_ALLOC;
 
     new_node->value = value;
     new_node->next = prev->next;
     prev->next = new_node;
 
     _list->size++;
-    return 0;
+    return LINKED_LIST_SUCCESS;
 }
 
 int get_at(list _list, int index, int* value_out){
-    if(_list == NULL) return -1;
-    if(_list->head == NULL) return -3;
-    if(index < 0 || index > _list->size) return -4;
+    if(_list == NULL) return LINKED_LIST_ERROR_NULL;
+    if(_list->head == NULL) return LINKED_LIST_ERROR_EMPTY;
+    if(index < 0 || index >= _list->size) return LINKED_LIST_ERROR_INDEX;
 
     node* current = _list->head;
     for(int i = 0; i < index; i++) current = current->next;
 
     *value_out = current->value;
-    return 0;
+    return LINKED_LIST_SUCCESS;
 }
 
 int get_front(list _list, int* value_out){
-    if(_list == NULL) return -1;
-    if(_list->head == NULL) return -3;
+    if(_list == NULL) return LINKED_LIST_ERROR_NULL;
+    if(_list->head == NULL) return LINKED_LIST_ERROR_EMPTY;
 
     *value_out = _list->head->value;
-    return 0;
+    return LINKED_LIST_SUCCESS;
 }
 
 int get_back(list _list, int* value_out){
-    if(_list == NULL) return -1;
-    if(_list->tail == NULL) return -3;
+    if(_list == NULL) return LINKED_LIST_ERROR_NULL;
+    if(_list->tail == NULL) return LINKED_LIST_ERROR_EMPTY;
 
     *value_out = _list->tail->value;
-    return 0;
+    return LINKED_LIST_SUCCESS;
 }
 
 int list_find(list _list, int value, int* index_out){
-    if(_list == NULL) return -1;
+    if(_list == NULL) return LINKED_LIST_ERROR_NULL;
 
     node* current = _list->head;
     int index = 0;
@@ -124,17 +124,17 @@ int list_find(list _list, int value, int* index_out){
         current = current->next;
         index++;
     }
-    if(current == NULL) return -5;
+    if(current == NULL) return LINKED_LIST_ERROR_NOT_FOUND;
     else {
         *index_out = index;
-        return 0;
+        return LINKED_LIST_SUCCESS;
     }
 }
 
 int remove_at(list _list, int index){
-    if(_list == NULL) return -1;
-    if(index < 0 || index > _list->size) return -4;
-    if(_list->head == NULL) return -3;
+    if(_list == NULL) return LINKED_LIST_ERROR_NULL;
+    if(index < 0 || index > _list->size) return LINKED_LIST_ERROR_INDEX;
+    if(_list->head == NULL) return LINKED_LIST_ERROR_EMPTY;
 
     node* to_delete;
     if(index == 0){
@@ -152,11 +152,11 @@ int remove_at(list _list, int index){
 
     free(to_delete);
     _list->size--;
-    return 0;
+    return LINKED_LIST_SUCCESS;
 }
 
 int remove_value(list _list, int value){
-    if(_list == NULL) return -1;
+    if(_list == NULL) return LINKED_LIST_ERROR_NULL;
 
     node* current = _list->head;
     node* prev = NULL;
@@ -165,7 +165,7 @@ int remove_value(list _list, int value){
         prev = current;
         current = current->next;
     }
-    if(current == NULL) return -5;
+    if(current == NULL) return LINKED_LIST_ERROR_NOT_FOUND;
     else{
         if(prev == NULL){
             _list->head = current->next;
@@ -177,17 +177,17 @@ int remove_value(list _list, int value){
         }
         free(current);
         _list->size--;
-        return 0;
+        return LINKED_LIST_SUCCESS;
     }
 }
 
 int size(list _list){
-    if(_list == NULL) return -1;
+    if(_list == NULL) return LINKED_LIST_ERROR_NULL;
     return (_list->size);
 }
 
 int is_empty(list _list){
-    if(_list == NULL) return -1;
+    if(_list == NULL) return LINKED_LIST_ERROR_NULL;
     return (_list->size == 0);
 }
 
