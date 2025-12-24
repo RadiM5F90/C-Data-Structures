@@ -24,7 +24,7 @@ typedef struct _queue* queue;
 
 /*
  * Creates a queue with a specified capacity
- * @param _capaciity Max number of elements the queue can store
+ * @param _capacity Max number of elements the queue can store
  * @return Pointer to the newly created queue, or NULL if there was an allocation error
  */
 queue queue_create(int _capacity);
@@ -37,7 +37,7 @@ void queue_destroy(queue* _queue);
 
 /*
  * Inserts an element into the queue
- * @param _queue Queue to insert the element on
+ * @param _queue Queue to insert the element into
  * @param _value Value to insert
  * @return QUEUE_SUCCESS if the insert was successful,
  *         QUEUE_ERROR_NULL if _queue is NULL,
