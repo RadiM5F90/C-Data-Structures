@@ -4,7 +4,7 @@
  *
  * Interface for a generic linked list, implemented as an ADT with opaque pointers to hide internal details
  *
- * The list has operations for inserting, removing, access and search for an element
+ * The list has operations for inserting, removing, accessing and searching for an element
  * Can be used in C applications that require flexible data structures
 */
 
@@ -34,6 +34,7 @@ list create_list();
 
 /*
  * Inserts an element at the front of the list
+ * @oaram list List to insert into
  * @param value Is the value to insert
  * @return LINKED_LIST_SUCCESS if it succeeded
  *         LINKED_LIST_ERROR_NULL if list is NULL
@@ -44,9 +45,10 @@ int insert_front(list list, int value);
 
 /*
  * Inserts an element at the tail of the list
+ * @oaram list List to insert into
  * @param value Is the value to insert
  * @return LINKED_LIST_SUCCESS if ok, 
- *         LINKED_LIST_ERROR_NULL if list is null
+ *         LINKED_LIST_ERROR_NULL if list is NULL
  *         LINKED_LIST_ERROR_ALLOC if the memory allocation failed
 */
 int insert_back(list list, int value);
@@ -55,6 +57,7 @@ int insert_back(list list, int value);
 /*
  * Inserts an element at index i (0-based)
  * @param list List to insert into
+ * @param index Index to insert into
  * @param value Is the value to insert
  * @return LINKED_LIST_SUCCESS if ok
  *         LINKED_LIST_ERROR_NULL if list is NULL
@@ -67,7 +70,7 @@ int insert_at(list list, int index, int value);
 /*
  * Reads the element in position i (0-based)
  * @param list List from which to read the element
- * @param index Index to read 
+ * @param index Index to read from
  * @param value_out Pointer to write the value on
  * @return LINKED_LIST_SUCCESS if ok 
  *         LINKED_LIST_ERROR_NULL if list is NULL
