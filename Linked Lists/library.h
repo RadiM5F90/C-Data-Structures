@@ -61,7 +61,7 @@ int insert_back(list list, int value);
  * @param value Is the value to insert
  * @return LINKED_LIST_SUCCESS if ok
  *         LINKED_LIST_ERROR_NULL if list is NULL
- *         LINKED_LIST_ERROR_INDEX is index is negative or it's too big
+ *         LINKED_LIST_ERROR_INDEX if index is negative or it's too big
  *         LINKED_LIST_ERROR_ALLOC if memory allocation failed
 */
 int insert_at(list list, int index, int value);
@@ -69,7 +69,7 @@ int insert_at(list list, int index, int value);
 
 /*
  * Reads the element in position i (0-based)
- * @param list List from which to read the element
+ * @param list List from which to read the element from
  * @param index Index to read from
  * @param value_out Pointer to write the value on
  * @return LINKED_LIST_SUCCESS if ok 
