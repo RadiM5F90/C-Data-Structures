@@ -75,6 +75,6 @@ bool queue_is_empty(queue _queue);
 /*
  * Checks if the queue is full
  * @param _queue Queue to check
- * @return true if it is full, fals otherwise. Returns false if _queue is NULL
+ * @return true if it is full, false otherwise. Returns false if _queue is NULL
  * */
 bool queue_is_full(queue _queue);
