@@ -165,7 +165,7 @@ int remove_value(list _list, int value){
         prev = current;
         current = current->next;
     }
-    if(current == NULL) return LINKED_LIST_ERROR_NOT_FOUND;
+    if(current == NULL) { return LINKED_LIST_ERROR_NOT_FOUND }
     else{
         if(prev == NULL){
             _list->head = current->next;
