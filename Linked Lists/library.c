@@ -124,7 +124,7 @@ int list_find(list _list, int value, int* index_out){
         current = current->next;
         index++;
     }
-    if(current == NULL) return LINKED_LIST_ERROR_NOT_FOUND;
+    if(current == NULL) { return LINKED_LIST_ERROR_NOT_FOUND }
     else {
         *index_out = index;
         return LINKED_LIST_SUCCESS;
