@@ -57,7 +57,7 @@ int stack_push(stack _stack, int _value);
 int stack_pop(stack _stack, int *_value_out);
 
 /*
- * Returns the value from the top of the stack without popping it
+ * Returns the value from the top of the stack without removing it
  * @param _stack Stack to read from
  * @param _value_out Pointer that's going to store the value
  * @return STACK_SUCCESS if ok,
