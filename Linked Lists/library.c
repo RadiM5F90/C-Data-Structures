@@ -73,7 +73,7 @@ int insert_at(list _list, int index, int value){
 
     node* prev = _list->head;
 
-    for(int i = 0; i < index; i++) prev = prev->next;
+    for(int i = 0; i < index - 1; i++) prev = prev->next;
 
     node* new_node = malloc(sizeof(node));
     if(new_node == NULL) return LINKED_LIST_ERROR_ALLOC;
